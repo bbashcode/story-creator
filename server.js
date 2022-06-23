@@ -8,6 +8,13 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 
+const cookieSession = require('cookie-session');
+app.use(cookieSession({
+  name: 'session',
+  keys: ['PAOLO'],
+  maxAge: 24 * 60 * 60 * 1000,
+}));
+
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
@@ -51,6 +58,12 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.get("/", (req, res) => {
   res.render("index");
 });
+
+app.get('/login/:user_id', (req, res) => {
+
+  req.session.user_id = req.params.user_id;
+  res.redirect('/api/users')
+})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
