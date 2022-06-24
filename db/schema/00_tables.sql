@@ -39,3 +39,5 @@ CREATE TABLE VOTES (
   contributor_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   contribution_id INTEGER REFERENCES contributions(id) ON DELETE CASCADE
 );
+
+
