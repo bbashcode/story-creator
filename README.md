@@ -1,4 +1,4 @@
-LHL Node Skeleton
+Story Creator App
 =========
 
 ## Project Setup
