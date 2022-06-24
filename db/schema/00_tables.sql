@@ -1,0 +1,41 @@
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS stories CASCADE;
+DROP TABLE IF EXISTS contributions CASCADE;
+DROP TABLE IF EXISTS votes CASCADE;
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY NOT NULL,
+
+  username VARCHAR(255) NOT NULL,
+  email VARCHAR(255),
+  password VARCHAR(255)
+);
+
+
+CREATE TABLE stories (
+  id SERIAL PRIMARY KEY NOT NULL,
+  creator_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  title VARCHAR(255) NOT NULL,
+  active_status BOOLEAN NOT NULL DEFAULT TRUE,
+  created_at TIMESTAMP NOT NULL DEFAULT Now(),
+  intro_text text NOT NULL
+
+);
+
+
+CREATE TABLE contributions (
+  id SERIAL PRIMARY KEY NOT NULL,
+  contributor_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  story_id INTEGER NOT NULL REFERENCES stories(id) ON DELETE CASCADE,
+  contribution text NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT Now(),
+  status text NOT NULL DEFAULT 'pending'
+
+);
+
+
+CREATE TABLE VOTES (
+  id SERIAL PRIMARY KEY NOT NULL,
+  contributor_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  contribution_id INTEGER REFERENCES contributions(id) ON DELETE CASCADE
+);
