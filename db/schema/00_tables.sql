@@ -29,7 +29,7 @@ CREATE TABLE contributions (
   story_id INTEGER NOT NULL REFERENCES stories(id) ON DELETE CASCADE,
   contribution text NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT Now(),
-  creator_accepted BOOLEAN NOT NULL DEFAULT FALSE
+  status text NOT NULL DEFAULT 'pending'
 
 );
 

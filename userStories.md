@@ -9,7 +9,7 @@
 - users cannot add to a completed story
 - users can read a story
 
-Hello!
+
 
 >>> BREAD 
 
