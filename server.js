@@ -8,6 +8,9 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: true}));
+
 const cookieSession = require('cookie-session');
 app.use(cookieSession({
   name: 'session',

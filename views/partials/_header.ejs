@@ -2,16 +2,16 @@
   <h1 id="page_name">Tale-Weaver</h1>
   <nav class="nav">
       <a href="/" class="nav-link">Home</a>
-      <a href="stories/my_stories/" class="nav-link">My Stories</a>
-      <a href="stories/create/" class="nav-link">Start A Story</a>
+      <a href="/stories/my_stories" class="nav-link">My Stories</a>
+      <a href="/stories/create" class="nav-link">Start A Story</a>
         <% if(user){ %>
         <form class="nav-link" action="/logout" method="POST">
          <label for="Username">Logged in as: <%= user.email %></label>
          <button type="submit" class="btn btn-primary">Logout</button>
         </form>
        <% } else{ %>
-      <a href="/login/" class="nav-link">Login</a>
-      <a href="/register/" class="nav-link">Register</a>
+      <a href="/login" class="nav-link">Login</a>
+      <a href="/register" class="nav-link">Register</a>
        <% } %>
   </nav>
 </header>
