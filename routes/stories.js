@@ -22,10 +22,28 @@ module.exports = (db) => {
     }
     const templateVars = {user: values[0].rows[0],stories: values[1].rows};
     res.render('mystories', templateVars);
-  })
+   })
+  });
+/////////////////////////////////////////////////////
+  router.get("/create", (req, res) => {
+    const userId = req.session.user_id;
+    if (!userId) {
+      console.log(userId)
+      res.send({message: "not logged in"});
+      return;
+    };
+
+    db.query(`SELECT * FROM users WHERE id = $1;`, [userId])
+      .then(data => {
+          if(data.rows.length === 0) {
+          res.send({error: "no user with that id"});
+          return;
+         }
+        const templateVars =  { user: data.rows[0] };
+        res.render('create', templateVars);
+      })
 
   });
-////////////
-
+  ////////////////////////////////////
   return router;
 };
