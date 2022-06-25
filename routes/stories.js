@@ -47,10 +47,10 @@ module.exports = (db) => {
   ////////////////////////////////////
   router.post("/create", (req, res) => {
     const userId = req.session.user_id;
-    const def = DEFAULT;
 
-    db.query(`INSERT INTO stories * (creator_id, title, active_status, created_at, intro_text)
-    VALUES($1, $2, $3, $4, $5) RETURNING *;`, [userId, req.body.Title, def, def, req.body.TextIntro])
+
+    db.query(`INSERT INTO stories (creator_id, title, intro_text)
+    VALUES($1, $2, $3) RETURNING *;`, [userId, req.body.Title, req.body.TextIntro])
       .then(() => {
         res.redirect('/stories/my_stories')
 
