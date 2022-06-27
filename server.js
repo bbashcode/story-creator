@@ -8,6 +8,16 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: true}));
+
+const cookieSession = require('cookie-session');
+app.use(cookieSession({
+  name: 'session',
+  keys: ['PAOLO'],
+  maxAge: 24 * 60 * 60 * 1000,
+}));
+
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
@@ -35,11 +45,15 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
+const userRouters = require("./routes/userRouters.js");
+const storiesRouters = require("./routes/stories.js");
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
+// app.use("/", userRouters(db));
+app.use("/stories", storiesRouters(db));
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
@@ -49,12 +63,14 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("login");
 });
 
-app.get("/create", (req, res) => {
-  res.render("createAStory");
-});
+app.get('/login/:user_id', (req, res) => {
+
+  req.session.user_id = req.params.user_id;
+  res.redirect('/stories')
+})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

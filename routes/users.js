@@ -10,9 +10,20 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
+    const userId = req.session.user_id;
+    if (!userId) {
+      console.log(userId)
+      res.send({message: "not logged in"});
+      return;
+    };
+
+    db.query(`SELECT * FROM users WHERE id = $1;`, [userId])
       .then(data => {
-        const users = data.rows;
+          if(data.rows.length === 0) {
+          res.send({error: "no user with that id"});
+          return;
+         }
+        const users = data.rows[0];
         res.json({ users });
       })
       .catch(err => {

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/styles/_header.css" type="text/css"/>
+  <link rel="stylesheet" href="/styles/create.css" type="text/css"/>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+	<title>Home</title>
+</head>
+<body>
+   <header>
+   <%- include('partials/_header'); %>
+   </header>
+<section>
+  <h1>Start Your Tale</h1>
+        <form method="post" action='/stories/create'>
+          <div class="form-input">
+            <label for="Title" id="Title">Title</label>
+            <input type="text" id="Title" name="Title">
+            <label for="TextIntro" id="TextIntro">Enter text for your tale</label>
+            <textarea id="TextIntro" name="TextIntro" rows="20" cols="50"></textarea>
+          </div>
+          <div id="buttons">
+             <input type="submit" value="Submit" id="submit">
+          </div>
+        </form>
+</section>
+</body>
+</html>

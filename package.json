@@ -1,5 +1,5 @@
 {
-  "name": "node-skeleton",
+  "name": "Story Creator App",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -9,10 +9,12 @@
     "local": "./node_modules/.bin/nodemon -L --ignore public/",
     "db:reset": "node bin/resetdb.js"
   },
-  "author": "Lighthouse Labs",
+  "author": "Paolo, Sara, Meer",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "chalk": "^2.4.2",
+    "cookie-session": "^2.0.0",
     "dotenv": "^2.0.0",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
