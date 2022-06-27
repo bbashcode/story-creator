@@ -69,7 +69,7 @@ app.get("/", (req, res) => {
 app.get('/login/:user_id', (req, res) => {
 
   req.session.user_id = req.params.user_id;
-  res.redirect('/')
+  res.redirect('/stories')
 })
 
 app.listen(PORT, () => {
