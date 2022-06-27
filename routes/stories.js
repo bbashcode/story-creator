@@ -75,14 +75,14 @@ module.exports = (db) => {
       return;
     };
 
-    Promise.all([db.query(`SELECT * FROM users WHERE id = $1;`, [userId]),
-    db.query(`SELECT intro_text FROM stories WHERE id = $1;`, [storyId]),
-    db.query(`SELECT contribution FROM CONTRIBUTIONS WHERE story_id = $1 AND status = 'selected' ORDER BY created_at`, [storyId])])
+    Promise.all([db.query(`SELECT * FROM users WHERE id = $1;`, [userId])])
+    //db.query(`SELECT intro_text FROM stories WHERE id = $1;`, [storyId]),
+    //db.query(`SELECT contribution FROM CONTRIBUTIONS WHERE story_id = $1 AND status = 'selected' ORDER BY created_at`, [storyId])])
     .then((values) => {
-console.log(values);
-      const templateVars = {user: values[0].rows[0],stories: values[1].rows, contributions: values[2].rows};
+console.log('values', values);
+      const templateVars = {user: values[0].rows[0]};
 
-res.render("singleStory");
+res.render("singleStory", templateVars);
     });
   });
   ////////////////////////////////////
