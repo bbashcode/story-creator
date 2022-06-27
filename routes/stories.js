@@ -19,6 +19,7 @@ module.exports = (db) => {
             return;
             }
             const templateVars = {user: values[0].rows[0], stories: values[1].rows};
+            console.log('test template vars', templateVars);
             res.render('home', templateVars);
         })
   });
@@ -62,6 +63,27 @@ module.exports = (db) => {
         res.render('create', templateVars);
       })
 
+  });
+
+  ////////////////////////////////////
+  router.get("/:story_id", (req, res) => {
+    const userId = req.session.user_id;
+    const storyId = req.params.story_id;
+    if (!userId) {
+      console.log(userId);
+      res.send({message: "not logged in"});
+      return;
+    };
+
+    Promise.all([db.query(`SELECT * FROM users WHERE id = $1;`, [userId]),
+    db.query(`SELECT intro_text FROM stories WHERE id = $1;`, [storyId]),
+    db.query(`SELECT contribution FROM CONTRIBUTIONS WHERE story_id = $1 AND status = 'selected' ORDER BY created_at`, [storyId])])
+    .then((values) => {
+console.log(values);
+      const templateVars = {user: values[0].rows[0],stories: values[1].rows, contributions: values[2].rows};
+
+res.render("singleStory");
+    });
   });
   ////////////////////////////////////
   router.post("/create", (req, res) => {
