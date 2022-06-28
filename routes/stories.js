@@ -78,7 +78,7 @@ module.exports = (db) => {
     Promise.all([db.query(`SELECT * FROM users WHERE id = $1;`, [userId]),
     db.query(`SELECT intro_text FROM stories WHERE id = $1;`, [storyId]),
     db.query(`SELECT contribution FROM CONTRIBUTIONS WHERE story_id = $1 AND status = 'selected' ORDER BY created_at`, [storyId]),
-  db.query(`SELECT title FROM stories WHERE id = $1;`, [storyId])])
+  db.query(`SELECT title, id FROM stories WHERE id = $1;`, [storyId])])
     .then((values) => {
 console.log('values', values);
 
