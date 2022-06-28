@@ -11,15 +11,40 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-
-	<title>Home</title>
+<style>
+  h2 {text-align: center;}
+</style>
+	<title><%=title.title%></title>
 </head>
 <body>
    <header>
    <%- include('partials/_header'); %>
    </header>
+   <h2><%=title.title%></h2>
    <section>
-This is a single story
+    <ul  class="article-list-basic" >
+    <text><%= start.intro_text %></text>%></text>
+
+
+    </ul>
+    <ul  class="article-list-basic" >
+
+      <% for (let line in contributions) { %>
+
+
+
+
+
+
+ <text><%= contributions[line].contribution%><br></text>
+
+
+
+<% } %>
+</ul>
+   </section>
+   <section>
+
    </section>
    </body>
    </html>
