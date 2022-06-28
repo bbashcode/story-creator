@@ -88,6 +88,38 @@ res.render("singleStory", templateVars);
     });
   });
   ////////////////////////////////////
+router.get("/:story_id/contribute", (req, res) => {
+  const userId = req.session.user_id;
+    const storyId = req.params.story_id;
+    if (!userId) {
+      console.log(userId);
+      res.send({message: "not logged in"});
+      return;
+    };
+
+    Promise.all([db.query(`SELECT * FROM users WHERE id = $1;`, [userId]),
+    db.query(`SELECT title, id FROM stories WHERE id = $1;`, [storyId])])
+    .then((values) => {
+console.log('values', values);
+
+      const templateVars = {user: values[0].rows[0], title: values[1].rows[0]};
+console.log('vars', templateVars);
+res.render("contribute", templateVars);
+    });
+
+});
+///////////////////////////////
+router.post("/:story_id/contribute", (req, res) => {
+  const userId = req.session.user_id;
+  const storyId = req.params.story_id;
+
+  db.query(`INSERT INTO contributions (contributor_id, story_id, contribution)
+  VALUES($1, $2, $3) RETURNING *;`, [userId, storyId, req.body.contribution])
+  .then(() => {
+    res.redirect(`/stories/${storyId}`)
+  }).catch(err => console.log("Error", err))
+});
+  ////////////////////////////////////
   router.post("/create", (req, res) => {
     const userId = req.session.user_id;
 
