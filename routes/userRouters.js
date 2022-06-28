@@ -7,7 +7,7 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     const userId = req.session.user_id;
     if (!userId) {
-      console.log(userId)
+      console.log(userId);
       res.send({message: "not logged in"});
       return;
     };
