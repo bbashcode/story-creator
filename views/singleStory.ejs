@@ -34,12 +34,18 @@
  <text><%= contributions[line].contribution%><br></text>
 <% } %>
 </ul>
-
-
-   <div class="text-center">
+    <% if(user.id === title.creator_id && title.active_status){ %>
+     <form action="/stories/<%=title.id%>/complete" method="post">
+        <button type="submit" name="complete" value="complete">Complete</button>
+    </form>
+  <% } %>
+   <% if(title.active_status){ %>
+    <div class="text-center">
     <a href="/stories/<%=title.id%>/contribute" class="btn btn-primary" role="button">Write More</a>
     <a class="btn btn-default" href="/stories/<%=title.id%>/vote"  role="button">Vote</a>
-
+  <% } else { %>
+    <h3 style="text-align: center; font-family: fantasy">THE END</p>
+   <% }%>
   </div>
 
 

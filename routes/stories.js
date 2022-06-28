@@ -78,7 +78,7 @@ module.exports = (db) => {
     Promise.all([db.query(`SELECT * FROM users WHERE id = $1;`, [userId]),
     db.query(`SELECT intro_text FROM stories WHERE id = $1;`, [storyId]),
     db.query(`SELECT contribution FROM CONTRIBUTIONS WHERE story_id = $1 AND status = 'selected' ORDER BY created_at`, [storyId]),
-  db.query(`SELECT title, id FROM stories WHERE id = $1;`, [storyId])])
+  db.query(`SELECT title, id, creator_id, active_status FROM stories WHERE id = $1;`, [storyId])])
     .then((values) => {
 console.log('values', values);
 
@@ -88,6 +88,21 @@ res.render("singleStory", templateVars);
     });
   });
   ////////////////////////////////////
+router.post("/:story_id/complete", (req, res) => {
+    //const userId = req.session.user_id;
+    const storyId = req.params.story_id
+
+
+    db.query(`UPDATE stories SET active_status = FALSE
+    WHERE id = $1 RETURNING *;`, [storyId])
+      .then(() => {
+        res.redirect(req.get('referer'));
+
+      }).catch(err => console.log("Error", err))
+
+  });
+
+ /////////////////////////////////////
   router.post("/create", (req, res) => {
     const userId = req.session.user_id;
 
@@ -100,6 +115,7 @@ res.render("singleStory", templateVars);
       }).catch(err => console.log("Error", err))
 
   });
+//////////////////////////////////////
 
   return router;
 };
