@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/styles/_header.css" type="text/css"/>
+  <link rel="stylesheet" href="/styles/home.css" type="text/css"/>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<style>
+  h2 {text-align: center;}
+</style>
+	<title><%=title.title%></title>
+</head>
+<body>
+   <header>
+   <%- include('partials/_header'); %>
+   </header>
+   <h2><%=title.title%></h2>
+   <section>
+    <ul  class="article-list-basic" >
+    <text><%= start.intro_text %></text>%></text>
+
+
+    </ul>
+    <ul  class="article-list-basic" >
+
+      <% for (let line in contributions) { %>
+
+ <text><%= contributions[line].contribution%><br></text>
+<% } %>
+</ul>
+
+
+   <div class="text-center">
+    <a href="/stories/<%=title.id%>/contribute" class="btn btn-primary" role="button">Write More</a>
+    <a class="btn btn-default" href="/stories/<%=title.id%>/vote"  role="button">Vote</a>
+
+  </div>
+
+
+
+   </body>
+   </html>
