@@ -230,7 +230,7 @@ module.exports = (db) => {
       })
       .catch((err) => console.log("Error", err));
   });
-  //POST CREATION TITLE AND TEXT to stories table
+
   ////////////////////////////////////
   //POST ROUTE FOR STORY COMPLETION
   router.post("/:story_id/complete", (req, res) => {
@@ -246,6 +246,7 @@ module.exports = (db) => {
       }).catch(err => console.log("Error", err))
 
   });
+  //POST CREATION TITLE AND TEXT to stories table
   ///////////////////////////////////
   router.post("/create", (req, res) => {
     const userId = req.session.user_id;
