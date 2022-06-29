@@ -93,7 +93,7 @@ module.exports = (db) => {
         `SELECT contribution FROM CONTRIBUTIONS WHERE story_id = $1 AND status = 'selected' ORDER BY created_at`,
         [storyId]
       ),
-      db.query(`SELECT title, id FROM stories WHERE id = $1;`, [storyId]),
+      db.query(`SELECT title, id, creator_id, active_status FROM stories WHERE id = $1;`, [storyId]),
     ]).then((values) => {
       console.log("values", values);
 
@@ -232,6 +232,21 @@ module.exports = (db) => {
   });
   //POST CREATION TITLE AND TEXT to stories table
   ////////////////////////////////////
+  //POST ROUTE FOR STORY COMPLETION
+  router.post("/:story_id/complete", (req, res) => {
+    //const userId = req.session.user_id;
+    const storyId = req.params.story_id
+
+
+    db.query(`UPDATE stories SET active_status = FALSE
+    WHERE id = $1 RETURNING *;`, [storyId])
+      .then(() => {
+        res.redirect(req.get('referer'));
+
+      }).catch(err => console.log("Error", err))
+
+  });
+  ///////////////////////////////////
   router.post("/create", (req, res) => {
     const userId = req.session.user_id;
 
