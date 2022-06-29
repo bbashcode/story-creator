@@ -36,7 +36,7 @@ CREATE TABLE contributions (
 
 CREATE TABLE VOTES (
   id SERIAL PRIMARY KEY NOT NULL,
-  contributor_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  voter_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   contribution_id INTEGER REFERENCES contributions(id) ON DELETE CASCADE
 );
 

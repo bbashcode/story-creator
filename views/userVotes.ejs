@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/styles/_header.css" type="text/css"/>
+  <link rel="stylesheet" href="/styles/home.css" type="text/css"/>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+	<title>Home</title>
+</head>
+<body>
+   <header>
+   <%- include('partials/_header'); %>
+   </header>
+   <section>
+    <ul  class="article-list-basic" >
+        <% for(let data in contributions) { %>
+        <li>
+          <% if(owner) {%>
+            <form method="post" action='/stories/<%=contributions[data].story_id%>/accept/<%=contributions[data].contribution_id%>'
+              <div>
+                  <h4><text>By: <%= contributions[data].username %> </text></h4>
+                  <text><%= contributions[data].contribution %></text>
+                  <!-- Use a find or filter function in the future...when we know how ....it will do the for loop and if statement check all in one -->
+                  <% %>
+                  <% for (let vote in votes){ %>
+                    <!-- Do this in a psql querry in the future -->
+                    <% if (votes[vote].contribution_id === contributions[data].contribution_id) { %>
+
+                  <text>Current Votes:<%= votes[vote].count %></text>
+                  <%}%>
+                  <%}%>
+
+
+
+                  <div id="buttons">
+                    <input type="submit" value="Accept" id="submit">
+                 </div>
+
+              </div>
+            </form>
+
+
+            <%} else {%>
+              <form method="post" action='/stories/<%=contributions[data].story_id%>/vote/<%=contributions[data].contribution_id%>'
+                <div>
+                    <h4><text>By: <%= contributions[data].username %> </text></h4>
+                    <text><%= contributions[data].contribution %></text>
+                    <!-- Use a find or filter function in the future...when we know how ....it will do the for loop and if statement check all in one -->
+                    <% %>
+                    <% for (let vote in votes){ %>
+                      <!-- Do this in a psql querry in the future -->
+                      <% if (votes[vote].contribution_id === contributions[data].contribution_id) { %>
+
+                    <text>Current Votes:<%= votes[vote].count %></text>
+                    <%}%>
+                    <%}%>
+
+
+
+                    <div id="buttons">
+                      <input type="submit" value="Vote" id="submit">
+                   </div>
+
+                </div>
+              </form>
+
+          <%}%>
+
+
+
+
+        </li>
+       <% } %>
+    </ul>
+  </section>
+</body>
+</html>
