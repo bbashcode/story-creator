@@ -81,6 +81,7 @@ module.exports = (db) => {
       console.log(userId);
       res.send({ message: "not logged in" });
       return;
+
     }
 
     Promise.all([
@@ -105,11 +106,14 @@ module.exports = (db) => {
       };
       console.log("vars", templateVars);
       res.render("singleStory", templateVars);
+
+
     });
   });
   //VOTING PAGE - Displays vote for general users, and an accpet button for the author of the story
   //votes are sent to votes table from a generic user and and author accept flags selected contribution as 'accepted' and all others as 'rejected'
   ////////////////////////////////////
+
   router.get("/:story_id/vote", (req, res) => {
     const userId = req.session.user_id;
     const storyId = req.params.story_id;
@@ -241,6 +245,7 @@ module.exports = (db) => {
       })
       .catch((err) => console.log("Error", err));
   });
+//////////////////////////////////////
 
   return router;
 };
