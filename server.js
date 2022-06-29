@@ -66,6 +66,11 @@ app.get("/", (req, res) => {
   res.render("login");
 });
 
+app.post("/login", (req, res) => {
+  req.session.user_id = req.params.user_id;
+  res.redirect('/login/:user_id');
+});
+
 app.get('/login/:user_id', (req, res) => {
 
   req.session.user_id = req.params.user_id;
