@@ -67,8 +67,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-  req.session.user_id = req.params.user_id;
-  res.redirect('/login/:user_id');
+  res.redirect('/login/1');
 });
 
 app.get('/login/:user_id', (req, res) => {
