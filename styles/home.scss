@@ -68,3 +68,14 @@
     font-weight: bold;
 }
 
+.button-group{
+  margin: 15rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#single-story {
+  padding: 0 auto;
+  margin-top: 8px;
+}
