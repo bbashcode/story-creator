@@ -18,8 +18,10 @@
 
     font: fantasy 13px sans-serif;
     text-align: center;
-
-    padding: 10px;
+    padding-top: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
     margin: 20px;
     max-width: 315px;
 }
@@ -35,7 +37,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    margin:0;
+    margin:10;
 }
 
 .article-list-basic li h2 a{
