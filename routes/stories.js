@@ -256,8 +256,9 @@ module.exports = (db) => {
     VALUES($1, $2, $3) RETURNING *;`,
       [userId, req.body.Title, req.body.TextIntro]
     )
-      .then(() => {
-        res.redirect("/stories/my_stories");
+      .then((data) => {
+
+        res.redirect(`/stories/${data.rows[0].id}`);
       })
       .catch((err) => console.log("Error", err));
   });
