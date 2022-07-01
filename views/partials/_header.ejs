@@ -1,12 +1,12 @@
 <header>
-  <h1 id="page_name">Tale-Weaver</h1>
-  <nav class="nav">
+  <h1 id="page_name" style="font-size: 60px; padding: 15px; margin: 0;">Tale-Weaver</h1>
+  <nav class="nav" style="font-size: 30px;">
       <a href="/stories" class="nav-link">Home</a>
       <a href="/stories/my_stories" class="nav-link">My Stories</a>
       <a href="/stories/create" class="nav-link">Start A Story</a>
         <% if(user){ %>
         <form class="nav-link" action="/logout" method="POST">
-         <label for="Username">Logged in as: <%= user.email %></label>
+         <label for="Username" style="font-size: 15px;">Hello <%= user.username %></label>
          <button type="submit" class="btn btn-primary">Logout</button>
         </form>
        <% } else{ %>
