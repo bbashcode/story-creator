@@ -6,23 +6,26 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/login.css" type="text/css"/>
   <title>StoryCreator Login</title>
 </head>
 <body>
- <h1>Welcome to Tale-Weaver</h1>
+ <div class="welcome-title"><h1>Welcome to Tale-Weaver</h1></div>
   <main style="margin: 1em;">
-    <h3>Login</h3>
-        <form method="POST" action="/login">
-          <div class="form-group">
-            <label for="exampleInputEmail">Email Address</label>
-            <input type="text" required class="form-control" id="InputEmail" placeholder="Enter email" name="email">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" required name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-          </div>
-          <button type="submit" class="btn btn-primary">Login</button>
-        </form>
+    <div class="login-title"><h3>Login</h3></div>
+    <div class="login-class">
+      <form method="POST" action="/login">
+      <div class="form-group">
+        <label for="exampleInputEmail">Email Address</label>
+        <input type="text" required class="form-control" id="InputEmail" placeholder="Enter email" name="email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" required name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
   </main>
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
