@@ -25,11 +25,17 @@ We have developed a minimal fullstack application using the following:
 ## Final Product
 Following is how our final product looks like. 
 
-A screenshot of the login page: ![Tale Weaver login page: ](https://github.com/bbashcode/story-creator/blob/meer/docs/LoginPage.png)
+A screenshot of the login page: ![Tale Weaver login page: ](https://github.com/bbashcode/story-creator/blob/master/docs/login.png)
 
-A screenshot of the honepage: ![Tale Weaver homepage: ](https://github.com/bbashcode/story-creator/blob/meer/docs/HomePage.png)
+A screenshot of the homepage: ![Tale Weaver homepage: ](https://github.com/bbashcode/story-creator/blob/master/docs/homepage_new.png)
 
-A screenshot of the single story page: ![Tale Weaver single story page: ](https://github.com/bbashcode/story-creator/blob/meer/docs/SingleStory.png)
+A screenshot of the single story page: ![Tale Weaver single story page: ](https://github.com/bbashcode/story-creator/blob/master/docs/single_story.png)
+
+A screenshot of the start a story page: ![Tale Weaver start a story page: ](https://github.com/bbashcode/story-creator/blob/master/docs/start_a_story.png)
+
+A screenshot of the vote accept page: ![Tale Weaver vote accept page: ](https://github.com/bbashcode/story-creator/blob/master/docs/vote_accept.png)
+
+A screenshot of the contribute page: ![Tale Weaver contribute page: ](https://github.com/bbashcode/story-creator/blob/master/docs/contribute.png)
 
 ## Dependencies
 
