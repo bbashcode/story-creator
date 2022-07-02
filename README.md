@@ -29,7 +29,7 @@ A screenshot of the login page: ![Tale Weaver login page: ](https://github.com/b
 
 A screenshot of the honepage: ![Tale Weaver homepage: ](https://github.com/bbashcode/story-creator/blob/meer/docs/HomePage.png)
 
-A screenshot of the single story page: ![Tale Weaver single story page: ](https://github.com/bbashcode/story-creator/blob/meer/docs/LoginP.png](https://github.com/bbashcode/story-creator/blob/meer/docs/SingleStory.png)) "Single Story Page")
+A screenshot of the single story page: ![Tale Weaver single story page: ](https://github.com/bbashcode/story-creator/blob/meer/docs/SingleStory.png)
 
 ## Dependencies
 
