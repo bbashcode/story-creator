@@ -1,6 +1,6 @@
-Story Creator App
+Tale Weaver App
 =========
-## Getting Started
+## Getting Started / Installation
 
 1. git clone the repo to you local directory: `git clone <repo>`
 2. Install dependencies using: `npm i`
@@ -11,17 +11,25 @@ Story Creator App
   - Note: nodemon is used, so you should not have to restart your server
 8. Visit `http://localhost:8080/`
 
-## Overview:
+## Overview
 The goal of this projet was to build a minimal and functional app where users can create, read and contribute to stories. Authors of the stories are able to accept user contributions to be added to a continuing story or mark it as complete. Users can also vote on contributions that they like.
 
+## Usage
+This project is more for learning purposes, it is not intended for any sorts of production deployment.
 ## Tech Stack
 We have developed a minimal fullstack application using the following:
 - Frontend: HTML, CSS, EJS, JS
 - Backend: NodeJS
 - Database: Postgres
 
-
 ## Final Product
+Following is how our final product looks like. 
+
+A screenshot of the login page: ![Tale Weaver login page: ](https://github.com/bbashcode/story-creator/blob/meer/docs/LoginP.png)
+
+A screenshot of the honepage: ![Tale Weaver homepage: ](https://github.com/bbashcode/story-creator/blob/meer/docs/HomePage.png)
+
+A screenshot of the single story page: ![Tale Weaver single story page: ](https://github.com/bbashcode/story-creator/blob/meer/docs/LoginP.png](https://github.com/bbashcode/story-creator/blob/meer/docs/SingleStory.png)) "Single Story Page")
 
 ## Dependencies
 
