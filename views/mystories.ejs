@@ -7,8 +7,7 @@
 
   <link rel="stylesheet" href="/styles/_header.css" type="text/css"/>
   <link rel="stylesheet" href="/styles/home.css" type="text/css"/>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -26,8 +25,11 @@
           <div>
               <h2><a href='/stories/<%= stories[story].id %>'><%= stories[story].title %></a></h2>
 
-              <p>Story in progress? <%= stories[story].active_status %></p>
-              <a href='/stories/<%= stories[story].id %>' class="read-more">Read more &rarr;</a>
+            <% if(stories[story].active_status){ %>
+              <a href='/stories/<%= stories[story].id %>' class="read-more">Continue Tale &rarr;</a>
+            <% } else{ %>
+               <a href='/stories/<%= stories[story].id %>' class="read-more">Read Tale &rarr;</a>
+               <% } %>
           </div>
       </li>
      <% } %>

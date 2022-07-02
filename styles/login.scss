@@ -1,0 +1,25 @@
+body {
+ font-family: fantasy;
+ color: #d69a02;
+ background-color: purple;
+ display: flex;
+ flex-direction: column;
+ margin-top: 80px;
+
+}
+
+.welcome-title{
+  display: flex;
+  justify-content: center;
+}
+
+.login-title{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.login-class{
+  display: flex;
+  justify-content: center;
+}

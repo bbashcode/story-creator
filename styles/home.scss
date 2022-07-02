@@ -13,29 +13,27 @@
     box-shadow: 1px 3px 1px 0 rgba(0, 0, 0, 0.08);
     border: 5px solid #cfcfcf;
     border-style: groove;
-    border-color: rgb(64, 158, 84);
+    border-color: purple;
     background-color: beige;
 
     font: fantasy 13px sans-serif;
     text-align: center;
-
-    padding: 10px;
+    padding-top: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
     margin: 20px;
     max-width: 315px;
 }
 
-/* Article photo */
 
-
-
-/* Article title */
 
 .article-list-basic li h2{
     font: bold 16px sans-serif;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    margin:0;
+    margin:10;
 }
 
 .article-list-basic li h2 a{
@@ -55,7 +53,8 @@
 /* Read more */
 
 .article-list-basic li a.read-more{
-    background-color: #87bcd7;
+
+    background-color: #d69a02;
     cursor: pointer;
     font-size: 12px;
     color: #ffffff;
@@ -66,3 +65,20 @@
     font-weight: bold;
 }
 
+.button-group{
+  margin: 15rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#single-story {
+  padding: 0 auto;
+  margin-top: 8px;
+}
+
+header {
+ background-color: purple;
+ color: #d69a02;
+
+}

@@ -81,6 +81,7 @@ module.exports = (db) => {
       console.log(userId);
       res.send({ message: "not logged in" });
       return;
+
     }
 
     Promise.all([
@@ -92,7 +93,7 @@ module.exports = (db) => {
         `SELECT contribution FROM CONTRIBUTIONS WHERE story_id = $1 AND status = 'selected' ORDER BY created_at`,
         [storyId]
       ),
-      db.query(`SELECT title, id FROM stories WHERE id = $1;`, [storyId]),
+      db.query(`SELECT title, id, creator_id, active_status FROM stories WHERE id = $1;`, [storyId]),
     ]).then((values) => {
       console.log("values", values);
 
@@ -105,11 +106,14 @@ module.exports = (db) => {
       };
       console.log("vars", templateVars);
       res.render("singleStory", templateVars);
+
+
     });
   });
   //VOTING PAGE - Displays vote for general users, and an accpet button for the author of the story
   //votes are sent to votes table from a generic user and and author accept flags selected contribution as 'accepted' and all others as 'rejected'
   ////////////////////////////////////
+
   router.get("/:story_id/vote", (req, res) => {
     const userId = req.session.user_id;
     const storyId = req.params.story_id;
@@ -226,8 +230,24 @@ module.exports = (db) => {
       })
       .catch((err) => console.log("Error", err));
   });
-  //POST CREATION TITLE AND TEXT to stories table
+
   ////////////////////////////////////
+  //POST ROUTE FOR STORY COMPLETION
+  router.post("/:story_id/complete", (req, res) => {
+    //const userId = req.session.user_id;
+    const storyId = req.params.story_id
+
+
+    db.query(`UPDATE stories SET active_status = FALSE
+    WHERE id = $1 RETURNING *;`, [storyId])
+      .then(() => {
+        res.redirect(req.get('referer'));
+
+      }).catch(err => console.log("Error", err))
+
+  });
+  //POST CREATION TITLE AND TEXT to stories table
+  ///////////////////////////////////
   router.post("/create", (req, res) => {
     const userId = req.session.user_id;
 
@@ -236,11 +256,13 @@ module.exports = (db) => {
     VALUES($1, $2, $3) RETURNING *;`,
       [userId, req.body.Title, req.body.TextIntro]
     )
-      .then(() => {
-        res.redirect("/stories/my_stories");
+      .then((data) => {
+
+        res.redirect(`/stories/${data.rows[0].id}`);
       })
       .catch((err) => console.log("Error", err));
   });
+//////////////////////////////////////
 
   return router;
 };

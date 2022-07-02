@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+
+
 body {
   margin: 0;
-  padding: 0;
+  padding: 30px;
   font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  background-color: beige;
+  background-color: bisque;
+
 }
 
 #page_name {
@@ -13,18 +16,18 @@ body {
 }
 .nav {
   text-align: center;
-  font-size: 1rem;
+  font-size: 40px;
   border-bottom: 1px solid #dee2e6;
   padding-left: 5px;
   padding-right: 5px;
-  margin-top: 20px;
+  margin-top: 0;
 }
 
 .nav-link {
   text-decoration: none;
   display: inline-block;
   padding: 13px 13px;
-  color: #212529;
+  color: #d69a02;
   margin-right: 5px;
 }
 
@@ -49,5 +52,13 @@ body {
   .nav-link {
     padding: 20px 20px;
   }
+
+}
+
+button {
+   padding: 0;
+   border: none;
+   background: none;
+   color: #d69a02;
 
 }
